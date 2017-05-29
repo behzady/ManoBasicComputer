@@ -1,0 +1,136 @@
+MEM
+	LD
+		RT1
+		D3T4
+		D5T4
+		D6T6
+AR
+	LD
+		R'T0
+		R'T2
+		D7'IT3
+	INC
+		D5T4
+	CLR
+		RT0
+PC
+	LD
+		D4T4
+		D5T5
+	INC
+		R'T1
+		RT2
+		D6T6Z
+		GB4N'
+		GB3N
+		GB2Z
+		GB1E'
+		PB9(FGI)
+		PB8(FGO)
+	CLR
+		RT1
+DR
+	LD
+		D0T4
+		D1T4
+		D2T4
+		D6T4
+		D6T5
+AC
+	LD
+		D0T5
+		D1T5
+		D2T5
+		GB9
+		PB11
+	INC
+		GB5
+	CLR
+		GB11
+IR
+	LD
+		R'T1
+TR
+	LD
+		RT0
+OUTR
+	LD
+		PB10
+SC
+	CLR
+		RT2
+		D0T5
+		D1T5
+		D2T5
+		D5T5
+		D3T4
+		D4T4
+		G
+		P
+--------
+I
+	LD
+		R'T2
+R
+	LD
+		T0'T1'T2'(IEN)(FGI+FGO)
+	CLR
+		RT2
+E
+	LD
+		D1T5
+		GB7
+		GB6
+	CLR
+		GB10
+	COM
+		GB8
+IEN
+	LD
+		PB7
+	CLR
+		RT2
+		PB6
+S
+	CLR
+		GB0
+FGI
+	CLR
+		PB11
+FGO
+	CLR
+		PB10
+--------
+ALU
+	AND	D0T5
+	ADD	D1T5
+	DR	D2T5
+	INR	PB11
+	COM GB9
+	SHR	GB7
+	SHL	GB6
+--------
+BUS
+010	PC
+		R'T0
+		RT0
+		D5T4
+111	MEM
+		R'T1
+		D7'IT3
+		D0T4
+		D1T4
+		D2T4
+		D6T4
+101	IR
+		R'T2
+110	TR
+		RT1
+100	AC
+		D3T4
+		PB10
+001	AR
+		D4T4
+		D5T5
+011	DR
+		D6T6
