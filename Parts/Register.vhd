@@ -12,7 +12,7 @@ entity reg is
 	port(
 		INC	:in std_logic := '0';
 		LD	:in std_logic := '0';
-		CLR	:in std_logic := '0';
+		CLR	:in std_logic := '1';
 		CLK	:in std_logic := '0';
 		Di	:in std_logic_vector(width-1 downto 0) := (Others => '0');
 		Do	:buffer std_logic_vector(width-1 downto 0):=(Others => '0');
@@ -25,14 +25,14 @@ architecture Structure of reg is
 	signal c: std_logic_vector(width-2 downto 0);
 	component registerBasic is
 		port(
-			INC	:in std_logic := '0';
-			LD	:in std_logic := '0';
-			CLR	:in std_logic := '0';
-			CLK	:in std_logic := '0';
-			Di	:in std_logic := '0';
-			Do	:buffer std_logic := '0';
+			INC	:in std_logic;
+			LD	:in std_logic;
+			CLR	:in std_logic;
+			CLK	:in std_logic;
+			Di	:in std_logic;
+			Do	:buffer std_logic;
 			Dno	:buffer std_logic;
-			Co	:out std_logic := '0'
+			Co	:out std_logic
 		);
 	end component;
 begin

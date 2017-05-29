@@ -12,16 +12,16 @@ entity flipflopD is
 	port(
 		D	: in		std_logic := '0';
 		CLK	: in		std_logic := '0';
-		CLR	: in		std_logic := '0';
-		Q	: buffer	std_logic := '1';
-		nQ	: buffer	std_logic := '0'
+		CLR	: in		std_logic := '1';
+		Q	: buffer	std_logic := '0';
+		nQ	: buffer	std_logic := '1'
 	);
 end flipflopD;
 
 architecture Structure of flipflopD is
 	signal s,r,rs,di: std_logic;
 begin
-	di <= D and not CLR;
+	di <= D and (not CLR);
 	Q <= s nand nQ;
 	nQ <= Q nand r;
 	s <= CLK nand (s nand rs);

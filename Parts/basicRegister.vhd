@@ -11,7 +11,7 @@ entity registerBasic is
 	port(
 		INC	:in std_logic := '0';
 		LD	:in std_logic := '0';
-		CLR	:in std_logic := '0';
+		CLR	:in std_logic := '1';
 		CLK	:in std_logic := '0';
 		Di	:in std_logic := '0';
 		Do	:buffer std_logic := '0';

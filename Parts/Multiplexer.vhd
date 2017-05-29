@@ -22,16 +22,16 @@ architecture Structure of Multiplexer is
 	component multiplexerBasic is
 		port(
 			Q:	out std_logic;
-			E:	in std_logic:= '1';
+			E:	in std_logic;
 			S:  in std_logic;
-			I:	in std_logic_vector(1 downto 0):="00"
+			I:	in std_logic_vector(1 downto 0)
 		);
 	end component;
 	component Multiplexer is
 		generic(N: integer:=3);
 		port(
 			Q:	out std_logic;
-			E:	in std_logic:= '1';
+			E:	in std_logic;
 			S:  in std_logic_vector(n-1 downto 0);
 			I:	in std_logic_vector(2**n-1 downto 0)
 		);

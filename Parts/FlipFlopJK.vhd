@@ -9,12 +9,12 @@ Library manoBasic; use manoBasic.defines.all, manoBasic.devices.all;
 
 entity flipflopJK is
 	port(
-		J	: in		std_logic := '0';
-		K	: in		std_logic := '0';
-		CLK	: in		std_logic := '0';
-		CLR	: in		std_logic := '0';
-		Q	: buffer	std_logic := '1';
-		nQ	: buffer	std_logic := '0'
+		J	: in		std_logic;
+		K	: in		std_logic;
+		CLK	: in		std_logic;
+		CLR	: in		std_logic;
+		Q	: buffer	std_logic;
+		nQ	: buffer	std_logic
 	);
 end flipflopJK;
 

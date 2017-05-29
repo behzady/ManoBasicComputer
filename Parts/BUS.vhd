@@ -9,7 +9,7 @@ Library manoBasic; use manoBasic.defines.all, manoBasic.devices.all;
 
 entity busLine is
 	port(
-		Ar: in word;
+		Ar: in adr;
 		PC: in word;
 		DR: in word;
 		AC: in word;
@@ -23,7 +23,7 @@ end busLine;
 
 architecture Structure of busLine is
 begin
-	Q <= Ar when S = busAR 
+	Q <= "0000"&Ar when S = busAR 
 	else PC when S = busPC 
 	else DR when S = busDR 
 	else AC when S = busAC 

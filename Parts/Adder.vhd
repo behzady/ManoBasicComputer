@@ -22,7 +22,7 @@ architecture Structure of fulladder is
 	signal c: std_logic_vector(width-2 downto 0);
 	component fulladderBasic is
 		port(
-			Ci: in std_logic:='0';
+			Ci: in std_logic;
 			A: in std_logic;
 			B: in std_logic;
 			S: out std_logic;

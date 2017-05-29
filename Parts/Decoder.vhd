@@ -23,16 +23,16 @@ architecture Structure of Decoder is
 	component decoderBasic is
 		port(
 			I:	in std_logic;
-			E:	in std_logic:= '1';
-			Q:	out std_logic_vector(1 downto 0):="00"
+			E:	in std_logic;
+			Q:	out std_logic_vector(1 downto 0)
 		);
 	end component;
 	component Decoder is
-		generic(N: integer:=4);
+		generic(N: integer);
 		port(
 			I:	in std_logic_vector(n-1 downto 0);
-			E:	in std_logic:= '1';
-			Q:	out std_logic_vector(2**n-1 downto 0):=(Others => '0')
+			E:	in std_logic;
+			Q:	out std_logic_vector(2**n-1 downto 0)
 		);
 	end component Decoder;
 begin

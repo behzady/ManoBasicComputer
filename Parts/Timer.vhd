@@ -10,7 +10,7 @@ Library manoBasic; use manoBasic.defines.all, manoBasic.devices.all;
 entity Timer is
 	port(
 		CLK: in std_logic;
-		CLR: in std_logic :='0';
+		CLR: in std_logic :='1';
 		T:	 out std_logic_vector(7 downto 0)
 	);
 end Timer;
@@ -20,7 +20,7 @@ architecture Structure of Timer is
 begin
 	counter: reg
 		generic map(width => 3)
-		port map(INC=>'1', CLR=>CLR, CLK=>CLK, Do=>count, Di => "0000");
+		port map(INC=>'1', CLR=>CLR, CLK=>CLK, Do=>count, Di => "000", LD=>'0');
 	decode:decoder
 		generic map(n => 3)
 		port map(I=>count, E=>'1', Q=>T);

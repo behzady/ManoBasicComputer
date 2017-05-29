@@ -14,7 +14,7 @@ entity Memory is
 	port(
 		CLK:in std_logic;
 		ADR:in adr;
-		ENR:in std_logic := '0';
+		ENR:in std_logic := '1';
 		ENW:in std_logic := '0';
 		DTW:in word;
 		DTR:out word
@@ -57,13 +57,15 @@ architecture Structure of Memory is
 
 	signal ram    : ram_t    := ReadMemFile(FILENAME);
 begin
-	DTR <= ram(to_integer(unsigned(ADR)));
-	process(CLK, ENW)
+	DTR <= ram(to_integer(unsigned(ADR))) when ENR='1' else (Others => 'Z');
+	process(CLK)
 	begin
 		if(rising_edge(CLK)) then
 			if(ENW = '1') then
 				ram(to_integer(unsigned(ADR))) <= DTW;
 				w <= WriteMemFile(FILENAME, ram);
+			elsif(ENR = '1') then
+				ram <= ReadMemFile(FILENAME);
 			end if;
 		end if;
 	end process;

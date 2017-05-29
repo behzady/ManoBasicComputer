@@ -12,8 +12,8 @@ package devices is
 		generic(N: integer:=4);
 		port(
 			I:	in std_logic_vector(n-1 downto 0);
-			E:	in std_logic:= '1';
-			Q:	out std_logic_vector(2**n-1 downto 0):=(Others => '0')
+			E:	in std_logic;
+			Q:	out std_logic_vector(2**n-1 downto 0)
 		);
 	end component Decoder;
 	component Multiplexer is
@@ -27,40 +27,40 @@ package devices is
 	end component;
 	component flipflopD is
 		port(
-			D	: in		std_logic := '0';
-			CLK	: in		std_logic := '0';
-			CLR	: in		std_logic := '0';
-			Q	: buffer	std_logic := '1';
-			nQ	: buffer	std_logic := '0'
+			D	: in		std_logic;
+			CLK	: in		std_logic;
+			CLR	: in		std_logic;
+			Q	: buffer	std_logic;
+			nQ	: buffer	std_logic
 		);
 	end component flipflopD;
 	component flipflopJK is
 		port(
-			J	: in		std_logic := '0';
-			K	: in		std_logic := '0';
-			CLK	: in		std_logic := '0';
-			CLR	: in		std_logic := '0';
-			Q	: buffer	std_logic := '1';
-			nQ	: buffer	std_logic := '0'
+			J	: in		std_logic;
+			K	: in		std_logic;
+			CLK	: in		std_logic;
+			CLR	: in		std_logic;
+			Q	: buffer	std_logic;
+			nQ	: buffer	std_logic
 		);
 	end component flipflopJK;
 	component reg is
 		generic(width: integer := sizeof_Word);
 		port(
-			INC	:in std_logic := '0';
-			LD	:in std_logic := '0';
-			CLR	:in std_logic := '0';
-			CLK	:in std_logic := '0';
+			INC	:in std_logic;
+			LD	:in std_logic;
+			CLR	:in std_logic;
+			CLK	:in std_logic;
 			Di	:in std_logic_vector(width-1 downto 0);
 			Do	:buffer std_logic_vector(width-1 downto 0);
 			Dno	:buffer std_logic_vector(width-1 downto 0);
-			Co	:out std_logic := '0'
+			Co	:out std_logic
 		);
 	end component reg;
 	component fulladder is
 		generic(width: integer := sizeof_Word);
 		port(
-			Ci: in std_logic:='0';
+			Ci: in std_logic;
 			A: in std_logic_vector(width-1 downto 0);
 			B: in std_logic_vector(width-1 downto 0);
 			S: out std_logic_vector(width-1 downto 0);
@@ -70,14 +70,14 @@ package devices is
 	component Timer is
 		port(
 			CLK: in std_logic;
-			CLR: in std_logic :='0';
+			CLR: in std_logic;
 			T:	 out std_logic_vector(7 downto 0)
 		);
 	end component Timer;
 	component ALU is
 		generic(width: integer := sizeof_Word);
 		port(
-			Ei: in std_logic := '0';
+			Ei: in std_logic;
 			Eo: out std_logic;
 			IP:	in std_logic_vector(7 downto 0);
 			AC:	in word;
@@ -97,15 +97,15 @@ package devices is
 		port(
 			CLK:in std_logic;
 			ADR:in adr;
-			ENR:in std_logic := '0';
-			ENW:in std_logic := '0';
+			ENR:in std_logic;
+			ENW:in std_logic;
 			DTW:in word;
 			DTR:out word
 		);
 	end component Memory;
 	component busLine is
 		port(
-			Ar: in word;
+			Ar: in adr;
 			PC: in word;
 			DR: in word;
 			AC: in word;
