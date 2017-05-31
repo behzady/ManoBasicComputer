@@ -71,6 +71,7 @@ package devices is
 		port(
 			CLK: in std_logic;
 			CLR: in std_logic;
+			EN : in std_logic;
 			T:	 out std_logic_vector(7 downto 0)
 		);
 	end component Timer;

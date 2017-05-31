@@ -58,12 +58,15 @@ architecture Structure of Memory is
 	signal ram    : ram_t    := ReadMemFile(FILENAME);
 begin
 	DTR <= ram(to_integer(unsigned(ADR))) when ENR='1' else (Others => 'Z');
+	process(ram)
+	begin
+		w <= WriteMemFile(FILENAME, ram);
+	end process;
 	process(CLK)
 	begin
 		if(rising_edge(CLK)) then
 			if(ENW = '1') then
 				ram(to_integer(unsigned(ADR))) <= DTW;
-				w <= WriteMemFile(FILENAME, ram);
 			elsif(ENR = '1') then
 				ram <= ReadMemFile(FILENAME);
 			end if;

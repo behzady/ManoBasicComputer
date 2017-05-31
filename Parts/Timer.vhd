@@ -11,6 +11,7 @@ entity Timer is
 	port(
 		CLK: in std_logic;
 		CLR: in std_logic :='1';
+		EN : in std_logic := '1';
 		T:	 out std_logic_vector(7 downto 0)
 	);
 end Timer;
@@ -23,5 +24,5 @@ begin
 		port map(INC=>'1', CLR=>CLR, CLK=>CLK, Do=>count, Di => "000", LD=>'0');
 	decode:decoder
 		generic map(n => 3)
-		port map(I=>count, E=>'1', Q=>T);
+		port map(I=>count, E=>EN, Q=>T);
 end Structure;

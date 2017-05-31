@@ -35,6 +35,7 @@ DR
 		D1T4
 		D2T4
 		D6T4
+	INC
 		D6T5
 AC
 	LD
